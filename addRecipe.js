@@ -105,7 +105,7 @@ const addToFavorites = (favorites, recipe) => {
 //Task: 6. remove a recipe from favorites
 const removeFavorite = (favorites, recipeName) => {
  const  updatedFavorites = favorites.filter(recipe=>{
-    if(recipe.name === recipeName){
+    if(recipe.name === recipeName){ 
       return false;
     } else {
       return true;
@@ -163,11 +163,98 @@ console.log(toggleVeganStatus(recipes,"rice bowl"));
 
 // Task: 10. get one recipe by name - return the recipe that matches the exact name of the recipe
 const searchByRecipeName = (recipes, recipeName) => {
- const myRecipeByName= recipes.filter(recipe=>{
+ const myRecipeByName = recipes.filter(recipe=>{
     if(recipe.name === recipeName){
       return recipe;
-    }
-    return myRecipeByName;
+    }   
   })
-  // use filter
+  return myRecipeByName;
 }
+
+
+const searchByIngredientName = (recipes, ingredientName) => {
+  const newRecipesWithIngredient=recipes.filter(recipe =>{
+// Task: 11. search by ingredient name - return all recipes that contain a given ingredient name
+
+   
+    const ingredientList= recipe.ingredients.filter(ingredient=>{
+      if(ingredient.name === ingredientName ) {
+        return true;
+      }
+    })
+
+    if(ingredientList.length !== 0){
+      return true;
+    } else{
+      return false;
+    }
+   
+  })
+  return newRecipesWithIngredient;
+}
+console.log(searchByIngredientName(recipes,"milk"));
+
+// Task: 12. add an ingredient to a recipe
+
+const addIngredient = (recipes, recipeName,ingredient) => {
+  const tobeChangedRecipe = recipes.find(recipe => {
+    if(recipe.name === recipeName){
+      return true;
+    }
+  })
+    return tobeChangedRecipe.ingredients.push(ingredient);
+}
+
+addIngredient(recipes, "salmon soup",{name: "garlic", quantity: 2,} );
+console.log(recipes);
+// Task: 13. delete an ingredient from a recipe, 
+const deleteIngredient = (recipes, recipeName, ingredientName) => {
+  
+  const myRecipeToBeChanged = recipes.find(recipe => {
+    if(recipe.name === recipeName){
+      return true;
+    }
+  })
+    const ingredientToChange = myRecipeToBeChanged.ingredients.filter(ingredient => {
+      if(ingredient.name !== ingredientName){
+        return true;
+      }
+    });
+    return ingredientToChange;
+}
+console.log(deleteIngredient(recipes,"carbonara", "cheese"));
+
+// Task: 14. edit a recipe - change the quantity of an ingredient
+    // find the recipe by name
+   // update the ingredients of the recipe you found to have newQuantity
+
+const editIngredientQuantity = (recipes, recipeName, ingredientName, newQuantity) => {
+  
+  const myRecipeToBeChanged = recipes.find(recipe => {
+    if(recipe.name === recipeName){
+      return true;
+    }
+  })
+  const ingredientToChange =myRecipeToBeChanged.ingredients.filter(ingredient=>{
+    if(ingredient.name == ingredientName){
+      ingredient.quantity = newQuantity;
+    }
+    return ingredient;
+  });
+  return ingredientToChange;
+}
+
+  // use map to map each recipe to itself, but if the name matches the recipeName, update the ingredients
+  // return the updated recipes array 
+
+const updatedNewRecipes = (recipes,recipeName) => recipes.map(recipe=>{
+  if(recipe.name != recipeName){
+    return recipe;
+  } else{
+    recipe.ingredients = editIngredientQuantity(recipes,"salmon soup" , "cream", 2);
+    return recipe;
+  }
+})
+ 
+console.log(updatedNewRecipes(recipes,"salmon soup"));
+  
