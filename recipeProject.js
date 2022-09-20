@@ -356,14 +356,21 @@ recipes = deleteIngredient (recipes, "rice bowl", "water");
   favorites = addToFavorites(recipes,favorites, "Ozzo Chicken");
   
 
-  // Task: 15.6S
+  // Task: 15.6
+ 
   // Delete the recipe "Lentil Bolognese" from the favorite
   favorites = removeFavorite (favorites,"Lentil Bolognese");
-  console.log(favorites);
+
+  // Task: 15.7
+  // Change the name of the recipe "rice bowl" to "Japanese Rice Bowl"
+  recipes = editRecipe(recipes,"rice bowl", "Japanese Rice Bowl");
+ 
+  // Task: 15.8
+  // change "rice bowl" to be vegan
+  recipes = toggleVeganStatus(recipes, "rice bowl");
+  console.dir(recipes, {depth: null});
+
   
-
-
-
   
 }
   
