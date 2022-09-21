@@ -166,18 +166,20 @@ const addToFavorites = (recipes,favorites, recipeName) => {
   // Task: 9. edit a recipe - make it vegan / make it non-vegan
   
   const toggleVeganStatus = (recipes, recipeName) => {
-    const toBeEditedRecipe = recipes.find(recipe => {
-      if(recipe.name === recipeName){
-        return recipe;
+    const editedRecipes = recipes.map(recipe => {
+      if(recipe.name === recipeName ){
+        if (recipe.vegan === true){
+            recipe.vegan = false;
+        } else{
+          recipe.vegan = true;
+        }
+            
       } 
+      return recipe;
     })
+    return editedRecipes;
     
-    if (toBeEditedRecipe.vegan === true){
-      return toBeEditedRecipe.vegan = false;
-    } else{
-      return toBeEditedRecipe.vegan = true;
-    }
-    }
+  }
   
   // Task: 10. get one recipe by name - return the recipe that matches the exact name of the recipe
   
@@ -367,7 +369,7 @@ recipes = deleteIngredient (recipes, "rice bowl", "water");
  
   // Task: 15.8
   // change "rice bowl" to be vegan
-  recipes = toggleVeganStatus(recipes, "rice bowl");
+  recipes = toggleVeganStatus(recipes,"Lentil Bolognese");
   console.dir(recipes, {depth: null});
 
   
