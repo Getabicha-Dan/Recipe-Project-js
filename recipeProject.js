@@ -264,7 +264,7 @@ const addToFavorites = (recipes,favorites, recipeName) => {
   
   // Task: 14. edit a recipe - change the quantity of an ingredient
      
- /* const editIngredientQuantity = (recipes, recipeName, ingredientName, newQuantity) => {
+ /*const editIngredientQuantity = (recipes, recipeName, ingredientName, newQuantity) => {
     
     const myRecipeToBeChanged = recipes.find(recipe => {
       if(recipe.name === recipeName){
@@ -287,8 +287,23 @@ const addToFavorites = (recipes,favorites, recipeName) => {
       recipe.ingredients = editIngredientQuantity();
       return recipe;
     }
-  })*/
-
+  })
+*/
+const editIngredientQuantity = (recipes, recipeName, ingredientName, newQuantity) => {
+  
+  const newRecipesWithQuanityChange = recipes.map(recipe => {
+    if(recipe.name === recipeName){
+      recipe.ingredients.map(ingredient => {
+        if(ingredient.name == ingredientName){
+          ingredient.quantity = newQuantity;
+        }
+        return ingredient;
+      });
+    }
+    return recipe;
+  })
+  return newRecipesWithQuanityChange;
+}
    
   // Task: 15. Execute the functions you implemented above as required below
   const main = () => {
@@ -369,10 +384,13 @@ recipes = deleteIngredient (recipes, "rice bowl", "water");
  
   // Task: 15.8
   // change "rice bowl" to be vegan
-  recipes = toggleVeganStatus(recipes,"Lentil Bolognese");
-  console.dir(recipes, {depth: null});
+  recipes = toggleVeganStatus(recipes,"Japanese Rice Bowl");
+ 
 
-  
+   // Task: 15.9
+  // change the quantity of the Ingredient lentil to be 2, in  Lentil Bolognese
+  recipes = editIngredientQuantity(recipes,"Lentil Bolognese", "lentil", 2);
+  console.dir(recipes, {depth: null});
   
 }
   
