@@ -390,7 +390,14 @@ recipes = deleteIngredient (recipes, "rice bowl", "water");
    // Task: 15.9
   // change the quantity of the Ingredient lentil to be 2, in  Lentil Bolognese
   recipes = editIngredientQuantity(recipes,"Lentil Bolognese", "lentil", 2);
-  console.dir(recipes, {depth: null});
+  // Task: 15.10
+  // call the function you implemented on task-5 to get the list of ingredients of "salmon soup"
+  // console.log these Ingredients
+  // TEST 1: it should print these ingredients: salmon, cream, milk, garlic
+  ingredients = getIngredientNames (recipes, "salmon soup");
+  console.log(ingredients);
+
+  //console.dir(recipes, {depth: null});
   
 }
   
