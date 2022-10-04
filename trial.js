@@ -42,6 +42,7 @@ function getRecipes() {
   }];
 }
 
+
 // Implement functions that perform the following tasks
 
 // Task: 1. Add a new recipe
@@ -82,13 +83,13 @@ const onlyVeganRecipes = (recipes) => {
 
 // Task: 4. get the names of the ingredients of a recipe
 
-const getIngredientNames = () => {
+/*const getIngredientNames = () => {
   const myRecipe = recipes.find(recipe => {
     return recipe.name === recipeName;
   })
   return myRecipe.ingredients.map(ingredient =>
     ingredient.name)
-}
+}*/
 
 //Task: 5. add a recipe to favorites
 
@@ -396,6 +397,7 @@ recipes = toggleVeganStatus(recipes,"Japanese Rice Bowl");
 // change the quantity of the Ingredient lentil to be 2, in  Lentil Bolognese
 
 recipes = editIngredientQuantity(recipes,"Lentil Bolognese", "lentil", 2);
+console.dir(recipes, {depth: null});
 
 // Task: 15.10
 // call the function you implemented on task-5 to get the list of ingredients of "salmon soup"
@@ -409,17 +411,17 @@ recipes = editIngredientQuantity(recipes,"Lentil Bolognese", "lentil", 2);
 // console.log all the vegan recipes
 // TEST 2: It should print the recipe Japanese Rice Bowl
 
-recipes = onlyVeganRecipes (recipes);
+//recipes = onlyVeganRecipes (recipes);
 
 // Task: 15.12
 // console.log all the recipes that contain the ingredient "lentil"
 // TEST 3: It should print the recipes Japanese Rice Bowl and Lentil Bolognes
 
-recipes = searchByIngredientName (recipes,"lentil");
+//recipes = searchByIngredientName (recipes,"lentil");
 
 //console.dir(recipes, {depth: null});
 //console.dir(favorites, {depth: null});
-console.log(itemsNameInFavourites (favorites));
+//console.log(itemsNameInFavourites (favorites));
 
 }
 

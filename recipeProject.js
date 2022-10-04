@@ -83,7 +83,7 @@ function getRecipes() {
  
   // Task: 4. get the names of the ingredients of a recipe
   
-  const getIngredientNames = () => {
+  const getIngredientNames = (recipes,recipeName) => {
     const myRecipe = recipes.find(recipe => {
       return recipe.name === recipeName;
     })
@@ -149,6 +149,13 @@ function getRecipes() {
     return editedRecipes;
     
   }
+// Eias method 
+ /* const toggleVeganStatus = (recipes, recipeName) => {
+    recipes.filter(recipe => recipe.name === recipeName).map(item => item.vegan = true)
+    return recipes;
+  };*/
+      // change "rice bowl" to be vegan
+  
   
 // Task: 10. get one recipe by name - return the recipe that matches the exact name of the recipe
   
@@ -220,7 +227,7 @@ function getRecipes() {
 const editIngredientQuantity = (recipes, recipeName, ingredientName, newQuantity) => {
   const newRecipesWithQuanityChange = recipes.map(recipe => {
     if(recipe.name === recipeName){
-      recipe.ingredients.map(ingredient => {
+      recipe.ingredients.find(ingredient => {
         if(ingredient.name == ingredientName){
           ingredient.quantity = newQuantity;
         }
@@ -333,23 +340,23 @@ recipes = editIngredientQuantity(recipes,"Lentil Bolognese", "lentil", 2);
 // console.log these Ingredients
 // TEST 1: it should print these ingredients: salmon, cream, milk, garlic
 
-ingredients = getIngredientNames (recipes, "salmon soup");
-console.log(ingredients);
+//ingredients = getIngredientNames (recipes, "salmon soup");
+
 
 // Task: 15.11
 // console.log all the vegan recipes
 // TEST 2: It should print the recipe Japanese Rice Bowl
 
-recipes = onlyVeganRecipes (recipes);
+//recipes = onlyVeganRecipes (recipes);
 
 // Task: 15.12
 // console.log all the recipes that contain the ingredient "lentil"
 // TEST 3: It should print the recipes Japanese Rice Bowl and Lentil Bolognes
 
-recipes = searchByIngredientName (recipes,"lentil");
+//recipes = searchByIngredientName (recipes,"lentil");
 
 console.dir(recipes, {depth: null});
-console.dir(favorites, {depth: null});
+//console.dir(favorites, {depth: null});
   
 }
   
